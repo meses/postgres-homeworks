@@ -8,6 +8,7 @@ group by ship_city, ship_country
 select order_id, customer_id, freight, ship_country from orders o
 where ship_country like 'P%'
 order by freight desc
+limit 10
 
 -- 3. фамилию и телефон сотрудников, у которых в данных отсутствует регион (см таблицу employees)
 select last_name, home_phone from employees e
@@ -23,6 +24,7 @@ select ship_country, sum(freight) as summ from orders o
 where ship_region is not null
 group by ship_country
 having sum(freight) > 2750
+order by sum(freight) desc
 
 -- 6. страны, в которых зарегистрированы и заказчики (customers) и поставщики (suppliers) и работники (employees).
 select country from customers c
